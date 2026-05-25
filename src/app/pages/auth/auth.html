@@ -1,0 +1,28 @@
+<body class="flex justify-center text-center p-8">
+    <div >
+       <h2>{{isLoginMode ? 'Login' : 'Cadastro'}}</h2>          <!-- se for login aparece Login senão Cadastro -->
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col text-start">           <!--  -->
+
+            <div *ngIf="!isLoginMode">                                   <!--Se for diferente de login  -->
+                <label for="name">Nome:</label>
+                <input id="name" formControlName="name" />
+            </div>
+
+            <label for="email">Email :</label>                               <!--Aqui vale pra login e pra Cadastro  -->
+            <input id="email" type="email" formControlName="email"/>
+
+
+            <label for="password">Senha :</label>
+            <input id="password" type="password" formControlName="password" [placeholder]="isLoginMode ? '' : 'Informe pelo menos 6 digitos'">
+                                                                               <!--Aqui vale pra login e pra Cadastro  -->
+            <button type="submit">{{isLoginMode ? 'Entrar' : 'Cadastrar'}}</button>
+        </form>
+
+
+        <p>
+            {{isLoginMode ? 'Não tem Conta?' : 'Já tem conta?'}}
+            <button (click)="toggleMode()">{{isLoginMode ? 'Criar conta' : 'Fazer login'}}</button>
+        </p>
+    </div>
+</body>
