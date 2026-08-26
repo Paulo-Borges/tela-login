@@ -1,15 +1,9 @@
 import { Routes } from '@angular/router';
 import { Auth } from './pages/auth/auth';
+import { Home } from './pages/home/home';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: Auth
-    },
-    {
-        path: 'home',
-        loadComponent() {
-            return import ('./pages/home/home').then(m => m.Home)
-        },
-    }
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: 'auth', component: Auth },
+  { path: 'home', component: Home },
 ];
